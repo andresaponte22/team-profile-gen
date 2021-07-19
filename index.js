@@ -8,29 +8,6 @@ const fs = require('fs')
 
 const staff = []
 
-function createManager() {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "Enter manager's name: "
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: "Enter manager's id:"
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "Enter manager's office number:"
-    }
-  ]).then(function(data) {
-    const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
-    members.push(manager)
-  })
-};
-
 function createTeam() {
   inquirer.prompt([
     {
@@ -57,6 +34,30 @@ function createTeam() {
   })
 }
 
+function createManager() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "Enter manager's name: "
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: "Enter manager's id:"
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "Enter manager's office number:"
+    }
+  ]).then(function(data) {
+    const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
+    staff.push(manager)
+    createTeam()
+  })
+};
+
 function createEngineer() {
   inquirer.prompt([
     {
@@ -79,5 +80,40 @@ function createEngineer() {
       name: "github",
       message: "Enter engineer's github username:"
     }
-  ])
+  ]).then(function(data) {
+    const engineer = new Engineer(data.name, data.id, data.email, data.github)
+    staff.push(engineer)
+    createTeam()
+  })
 }
+
+function createIntern() {
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "name",
+      message: "Enter intern's name"
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "Enter intern's ID"
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "Enter intern's email"
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "Enter intern's school"
+    }
+  ]).then(function(data) {
+    const intern = new Intern(data.name, data.id, data.email, data.school)
+    staff.push(intern)
+    createTeam()
+  })
+}
+
+createManager()
