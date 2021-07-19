@@ -1,26 +1,4 @@
-const { createEngineerCard, createManagerCard, createInternCard } = require('./card-gen')
 
-function createTeamCards(team) {
-  let cards = ''
-  team.forEach(member => {
-    switch (member.getRole()) {
-      case 'Intern':
-        cards += createInternCard(member)
-        break
-      case 'Engineer':
-        cards += createEngineerCard(member)
-        break
-      case 'Manager':
-        cards += createManagerCard(member)
-        break
-    }
-  })
-  const teamHTML = createHTML(cards)
-  return teamHTML
-};
-
-function createHTML(teamCards) {
-  return `
   <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +22,21 @@ function createHTML(teamCards) {
     <div class="container">
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
-                ${teamCards}
+                
+  <div class="card employee-card">
+  <div class="card-header">
+      <h2 class="card-title">Andres</h2>
+      <h4>Manager👔</h4>
+  </div>
+  <div class="card-body">
+      <ul class="list-group">
+          <li class="list-group-item">ID: 2</li>
+          <li class="list-group-item">Email: <a href="mailto:andres@gmail.com">andres@gmail.com</a></li>
+          <li class="list-group-item">Office number:2</li>
+      </ul>
+  </div>
+</div>
+  
             </div>
         </div>
     </div>
@@ -53,10 +45,4 @@ function createHTML(teamCards) {
 </body>
 
 </html>
-  `
-}
-
-module.exports = createTeamCards;
-
-
-
+  

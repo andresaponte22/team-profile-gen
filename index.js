@@ -6,7 +6,7 @@ const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
-const createHTML = require('./src/create-html.js')
+const createTeamCards = require('./src/html-gen')
 
 let staff = []
 
@@ -32,12 +32,12 @@ function createTeam() {
         break;
       case 'EXIT':
         console.log('Creating website...')
+        const html = createTeamCards(staff)
+        fs.writeFile("./dist/main.html", html, err => {
+          err ? console.log(err) : console.log('success')
+        })
         break
     }
-  })
-
-  fs.writeFile("./dist/index.html", render(staff), err => {
-    if (err) throw err
   })
 }
 
