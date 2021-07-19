@@ -6,14 +6,16 @@ const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
-const staff = []
+const createHTML = require('./src/create-html.js')
+
+let staff = []
 
 function createTeam() {
   inquirer.prompt([
     {
       type: "checkbox",
       message: "What staff member would you like to add?",
-      name: "staff",
+      name: "member",
       choices: [
         "Engineer",
         "Intern",
@@ -21,16 +23,21 @@ function createTeam() {
       ]
     }
   ]).then(function(data) {
-    switch (data.staff) {
+    switch (data.member[0]) {
       case 'Engineer':
         createEngineer()
         break;
       case 'Intern':
         createIntern()
         break;
-      default:
-        throw new Error('Invalid staff role')
+      case 'EXIT':
+        console.log('Creating website...')
+        break
     }
+  })
+
+  fs.writeFile("./dist/index.html", render(staff), err => {
+    if (err) throw err
   })
 }
 
@@ -45,6 +52,11 @@ function createManager() {
       type: 'input',
       name: 'id',
       message: "Enter manager's id:"
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: "Enter manager's email:"
     },
     {
       type: "input",
