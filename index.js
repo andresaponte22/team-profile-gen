@@ -48,9 +48,9 @@ function createManager() {
     },
     {
       type: "input",
-      name: "id",
+      name: "officeNumber",
       message: "Enter manager's office number:"
-    }
+    },
   ]).then(function(data) {
     const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
     staff.push(manager)
