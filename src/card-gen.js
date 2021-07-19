@@ -3,11 +3,11 @@ const createEngineerCard = function (engineer) {
   <div class="card employee-card">
   <div class="card-header">
       <h2 class="card-title">${engineer.name}</h2>
-      <h4>Engineer💻</h4>
+      <h4 class="card-title">Engineer💻</h4>
   </div>
   <div class="card-body">
       <ul class="list-group">
-          <li class="list-group-item">ID:${engineer.id}</li>
+          <li class="list-group-item">ID: ${engineer.id}</li>
           <li class="list-group-item">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></li>
           <li class="list-group-item">GitHub: <a href="https://github.com/${engineer.github}" target="_blank" rel="noopener noreferrer">${engineer.github}</a></li>
       </ul>
@@ -21,11 +21,11 @@ const createInternCard = function (intern) {
   <div class="card employee-card">
   <div class="card-header">
       <h2 class="card-title">${intern.name}</h2>
-      <h4>Intern📁</h4>
+      <h4 class="card-title">Intern📁</h4>
   </div>
   <div class="card-body">
       <ul class="list-group">
-          <li class="list-group-item">ID:${intern.id}</li>
+          <li class="list-group-item">ID: ${intern.id}</li>
           <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
           <li class="list-group-item">School: ${intern.school}</li>
       </ul>
@@ -39,7 +39,7 @@ const createManagerCard = function (manager) {
   <div class="card employee-card">
   <div class="card-header">
       <h2 class="card-title">${manager.name}</h2>
-      <h4>Manager👔</h4>
+      <h4 class="card-title">Manager👔</h4>
   </div>
   <div class="card-body">
       <ul class="list-group">
